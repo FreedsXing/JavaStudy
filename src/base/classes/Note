@@ -1,0 +1,38 @@
+-----------------------------------------------------------------------------
+常用类
+1.用户相关
+	main()方法
+	Scanner
+2.系统相关
+	System
+	Runtime
+3.Object类  //所有类的父类
+	Class<?> getClass()
+    int hashCode()
+    String toString()
+    protected clone() //浅克隆
+    
+	Java7新增Objects类
+4.String/StringBuffer/StringBuilder类
+5.Math类
+6.ThreadLocalRandom、Random
+7.BigDecimal类
+8.Date Calendar
+   java.time包
+9.Pattern Matcher
+10.国际化与格式化
+	NunberFormat
+	DateFormat...
+-----------------------------------------------------------------	
+BigDecimal类
+	创建BigDecimal()不要使用double作为参数，"0.01" / BigDecimal.valueOf()
+	
+	add
+	sub
+	mul
+	div
+	
+	BigDecimal.HALF_ROUND_UP == RoundingMode.HALF_UP  //四舍五入
+	BigDecimal.HALF_ROUND_UP == RoundingMode.HALF_UP  //五舍六入
+	
+	
