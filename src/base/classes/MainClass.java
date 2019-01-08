@@ -2,13 +2,43 @@ package base.classes;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainClass {
 
 	public static void main(String[] args) {
 	
 		//demoBigDecimal();
-		demoDecimalFormat();
+		//demoDecimalFormat();
+		
+		
+		demoDateTime();
+	}
+	
+	public static void demoDateTime() {
+		Date date = new Date();
+		System.out.println(" --- Date= " + date);
+		System.out.println(" --- time= " + date.toString());
+		
+		System.out.println(" --- time= " + System.currentTimeMillis());
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(" --- Date= " + sdf.format(new Date(System.currentTimeMillis() - 1000 * 60 * 60)));
+	
+		System.out.println(" --- Date= " + sdf.format(new Date()));
+		
+		 Calendar cal = Calendar.getInstance();
+		System.out.println(" --- " + cal.get(Calendar.HOUR_OF_DAY));
+		
+		//测试时间工具类方法
+		testTimeUtilMethod();
+	}
+
+	private static void testTimeUtilMethod() {
+
+		System.out.println("获取某年某月的最后一天: " + TimeUtil.getLastDayOfMonth(2019, 1));
 	}
 
 	//数值类型的格式显示
@@ -63,11 +93,6 @@ public class MainClass {
 		System.out.println("0.05 - 0.01 = " + BigDecimalUtil.sub(num4, num5));
 		System.out.println("0.05 * 0.01 = " + df.format(BigDecimalUtil.mul(num4, num5)));
 		System.out.println("0.05 / 0.01 = " + BigDecimalUtil.div(num4, num5));
-		
-		
-		
-		
-		
-		
+	
 	}
 }
