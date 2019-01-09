@@ -1,19 +1,124 @@
 package base.classes;
 
 import java.text.DateFormat;
+import java.text.Format;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class TimeUtil {
+public class DateUtil {
+	
+	/**
+	 * 将字符串转化为短日期格式Date
+	 * @param date
+	 * @return
+	 */
+	public static String dateToStr(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(date);
+	}
+	
+	
+	/**
+	 * 将短时间格式字符串转换为时间 yyyy-MM-dd
+	 */
+	public static Date strToDate(String str) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			 date = sdf.parse(sdf.format(sdf.parse(str)));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return date;
+	}
+	
+	
+	/**
+	 * 	获得N天后的日期
+	 * @param daysAfter
+	 * @return N天后日期
+	 */
+	public static String getDateAfterSomeDays(int daysAfter) {
+		
+		Calendar cal = Calendar.getInstance();
 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		cal.add(Calendar.DATE, daysAfter);
+		
+		return sdf.format(cal.getTime());
+	}
+	
+	
+	/**
+	 * 获得截止某日期的天数
+	 * @param date
+	 * @return days
+	 */
+	public static int getDaysUntilSomeDate(Date date) {
+		
+		if (date == null || date.equals(""))
+			return 0;
+		
+		long timeCurrent = System.currentTimeMillis();
+				
+	    long days = (date.getTime() - timeCurrent) / 1000 / 3600 / 24;
+		
+		return (int) days;
+	}
+	
+	/**
+	 * 两个时间之间的天数
+	 *
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
+	public static long getDaysBetweenTwoDates(String date1, String date2) {
+		if (date1 == null || date1.equals(""))
+			return 0;
+		if (date2 == null || date2.equals(""))
+			return 0;
+		// 转换为标准时间
+		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = null;
+		java.util.Date mydate = null;
+		try {
+			date = myFormatter.parse(date1);
+			mydate = myFormatter.parse(date2);
+		} catch (Exception e) {
+		}
+		long day = (date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000);
+		return day;
+	}
+	
+	
+	/**
+	 * 判断是否是闰年
+	 * 
+	 * @param year 年
+	 * @return 是否
+	 */
+	public static boolean isLeapYear(int year) {
+		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	}
+	
+	
+	
+
+	
+	private final double PI = 3.14;
 	// 用来全局控制 上一周，本周，下一周的周数变化
 	private int weeks = 0;
 	private int MaxDate;// 一月最大天数
 	private int MaxYear;// 一年最大天数
 
+	
 	/**
 	 * 得到指定月后（前）的日期 参数传负数即可
 	 */
@@ -31,21 +136,6 @@ public class TimeUtil {
 		return strDate;
 	}
 
-	/**
-	 * 得到二个日期间的间隔天数
-	 */
-	public static String getTwoDay(String sj1, String sj2) {
-		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		long day = 0;
-		try {
-			java.util.Date date = myFormatter.parse(sj1);
-			java.util.Date mydate = myFormatter.parse(sj2);
-			day = (date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000);
-		} catch (Exception e) {
-			return "";
-		}
-		return day + "";
-	}
 
 	/**
 	 * 根据一个日期，返回是星期几的字符串
@@ -55,7 +145,7 @@ public class TimeUtil {
 	 */
 	public static String getWeek(String sdate) {
 		// 再转换为时间
-		Date date = TimeUtil.strToDate(sdate);
+		Date date = DateUtil.strToDate(sdate);
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		// int hour=c.get(Calendar.DAY_OF_WEEK);
@@ -64,40 +154,6 @@ public class TimeUtil {
 		return new SimpleDateFormat("EEEE").format(c.getTime());
 	}
 
-	/**
-	 * 将短时间格式字符串转换为时间 yyyy-MM-dd
-	 */
-	public static Date strToDate(String strDate) {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		ParsePosition pos = new ParsePosition(0);
-		Date strtodate = formatter.parse(strDate, pos);
-		return strtodate;
-	}
-
-	/**
-	 * 两个时间之间的天数
-	 *
-	 * @param date1
-	 * @param date2
-	 * @return
-	 */
-	public static long getDays(String date1, String date2) {
-		if (date1 == null || date1.equals(""))
-			return 0;
-		if (date2 == null || date2.equals(""))
-			return 0;
-		// 转换为标准时间
-		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		java.util.Date date = null;
-		java.util.Date mydate = null;
-		try {
-			date = myFormatter.parse(date1);
-			mydate = myFormatter.parse(date2);
-		} catch (Exception e) {
-		}
-		long day = (date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000);
-		return day;
-	}
 
 	// 计算当月最后一天,返回字符串
 	public String getDefaultDay() {
@@ -422,15 +478,5 @@ public class TimeUtil {
 			}
 		}
 		return 0;
-	}
-
-	/**
-	 * 判断是否是闰年
-	 * 
-	 * @param year 年
-	 * @return 是否
-	 */
-	public static boolean isLeapYear(int year) {
-		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	}
 }

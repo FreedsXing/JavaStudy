@@ -10,16 +10,20 @@
 	Class<?> getClass()
     int hashCode()
     String toString()
-    protected clone() //浅克隆
-    
+    protected clone() //浅克隆 
 	Java7新增Objects类
 4.String/StringBuffer/StringBuilder类
+
 5.Math类
+
 6.ThreadLocalRandom、Random
+
 7.BigDecimal类
+
 8.Date Calendar
    java.time包
 9.Pattern Matcher
+
 10.国际化与格式化
 	NunberFormat
 	DateFormat...
@@ -34,5 +38,13 @@ BigDecimal类
 	
 	BigDecimal.HALF_ROUND_UP == RoundingMode.HALF_UP  //四舍五入
 	BigDecimal.HALF_ROUND_UP == RoundingMode.HALF_UP  //五舍六入
+	
+-------------------------------------------------------------------
+Date/Calendar/SimpleDateFormat类
+	date与str转化
+	根据日期获得天数
+	根据天数获得日期
+	计算日期间天数
+	
 	
 	

@@ -6,41 +6,36 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MainClass {
+public class Main {
 
 	public static void main(String[] args) {
 	
 		//demoBigDecimal();
 		//demoDecimalFormat();
 		
-		
-		demoDateTime();
-	}
-	
-	public static void demoDateTime() {
-		Date date = new Date();
-		System.out.println(" --- Date= " + date);
-		System.out.println(" --- time= " + date.toString());
-		
-		System.out.println(" --- time= " + System.currentTimeMillis());
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println(" --- Date= " + sdf.format(new Date(System.currentTimeMillis() - 1000 * 60 * 60)));
-	
-		System.out.println(" --- Date= " + sdf.format(new Date()));
-		
-		 Calendar cal = Calendar.getInstance();
-		System.out.println(" --- " + cal.get(Calendar.HOUR_OF_DAY));
-		
 		//测试时间工具类方法
-		testTimeUtilMethod();
+		testDateUtil();
 	}
 
-	private static void testTimeUtilMethod() {
-
-		System.out.println("获取某年某月的最后一天: " + TimeUtil.getLastDayOfMonth(2019, 1));
+	
+	private static void testDateUtil() {
+		Date date = new Date(); //该格式为格林尼治时间格式 : Wed Jan 09 13:33:30 CST 2019
+		System.out.println("Date: " + date);
+		System.out.println("time: " + date.toString());
+		System.out.println("格式化时间：: " + new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss").format(date));
+		
+		System.out.println("Date转换为短日期Str: " + DateUtil.dateToStr(date));
+		System.out.println("Str转换为短日期格式Date: " + DateUtil.strToDate("2019-11-11"));
+		
+		System.out.println("获取N天后的日期: " + DateUtil.getDateAfterSomeDays(-1));
+		System.out.println("获取截止某日期的天数: " + DateUtil.getDaysUntilSomeDate(DateUtil.strToDate("2019-05-05")));
 	}
 
+	
+	
+	
+	
 	//数值类型的格式显示
 	public static void demoDecimalFormat() {
 		
@@ -81,11 +76,9 @@ public class MainClass {
 		System.out.println("0.05 - 0.01 = " + num1.subtract(num3));
 		System.out.println("0.05 * 0.01 = " + num1.multiply(num3));
 		//System.out.println("0.05 / 0.01 = " + num1.divide(num3));
-		
-		
+			
 		//数值格式化类
 		DecimalFormat df = new DecimalFormat("0.00");
-		
 		
 		double num4 = 0.05;
 		double num5 = 0.01;
