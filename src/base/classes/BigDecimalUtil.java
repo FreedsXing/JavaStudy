@@ -15,6 +15,7 @@ public class BigDecimalUtil {
 		return n1.add(n2).doubleValue();
 	}
 	
+	
 	public static double sub(double num1, double num2) {
 		
 		BigDecimal n1 = BigDecimal.valueOf(num1);
@@ -23,6 +24,7 @@ public class BigDecimalUtil {
 		return n1.subtract(n2).doubleValue();
 	}
 	
+	
 	public static double mul(double num1, double num2) {
 		
 		BigDecimal n1 = BigDecimal.valueOf(num1);
@@ -30,6 +32,7 @@ public class BigDecimalUtil {
 		
 		return n1.multiply(n2).doubleValue();
 	}
+	
 	
 	public static double div(double num1, double num2) {
 		
