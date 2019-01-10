@@ -1,4 +1,4 @@
-package base.classes;
+package com.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,12 +9,16 @@ import java.util.regex.Pattern;
 
 public class CardUtil {
 	
-	
-	public static String isValidBankCard(String bankNum) {
+	/**
+	 * 初步验证银行卡
+	 * @param bankNum
+	 * @return
+	 */
+	public static String veriftBankCard(String bankNum) {
         /**
-         * 1|允许出金条件修改为：卡号位数等于16位、18位、19位允许出金。
-         * 2、卡号位数为15位、16位时，卡号前四位是6225、4514、4392、4367、5187、5236、5218、5194、5123、3568则判断为信用卡，
-         * 2   输入框下方文案提示“十分抱歉！暂时不支持出金到信用卡”。
+         * 1/卡号位数等于16位、18位、19位允许出金。
+         * 2/卡号位数为15位、16位时，卡号前四位是6225、4514、4392、4367、5187、5236、5218、5194、5123、3568则判断为信用卡，
+         * 3/输入框下方文案提示“十分抱歉！暂时不支持出金到信用卡”。
          */
         String resultText = "YES";
         if (bankNum != null && bankNum.length() > 0) {
@@ -43,7 +47,7 @@ public class CardUtil {
      * @return "YES" 代表合法的身份证 ,其他值代表错误信息
      * @throws ParseException
      */
-    public static String IDCardValidate(String IDStr) {
+    public static String verifyIDCard(String IDStr) {
         String tipInfo = "YES";// 记录错误信息
         String Ai = "";
 
@@ -110,10 +114,10 @@ public class CardUtil {
     }
 
     /*
-     * 判断第18位校验码是否正确 第18位校验码的计算方式： 1. 对前17位数字本体码加权求和 公式为：S = Sum(Ai * Wi), i =
+          * 判断第18位校验码是否正确 第18位校验码的计算方式： 1. 对前17位数字本体码加权求和 公式为：S = Sum(Ai * Wi), i =
      * 0, ... , 16 其中Ai表示第i个位置上的身份证号码数字值，Wi表示第i位置上的加权因子，其各位对应的值依次为： 7 9 10 5 8 4
      * 2 1 6 3 7 9 10 5 8 4 2 2. 用11对计算结果取模 Y = mod(S, 11) 3. 根据模的值得到对应的校验码
-     * 对应关系为： Y值： 0 1 2 3 4 5 6 7 8 9 10 校验码： 1 0 X 9 8 7 6 5 4 3 2
+            * 对应关系为： Y值： 0 1 2 3 4 5 6 7 8 9 10 校验码： 1 0 X 9 8 7 6 5 4 3 2
      */
     private static boolean isVarifyCode(String Ai, String IDStr) {
         String[] VarifyCode = { "1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2" };
@@ -134,7 +138,7 @@ public class CardUtil {
     }
 
     /**
-     * 将所有地址编码保存在一个Hashtable中
+         * 将所有地址编码保存在一个Hashtable中
      *
      * @return Hashtable 对象
      */
@@ -179,7 +183,7 @@ public class CardUtil {
     }
 
     /**
-     * 判断字符串是否为数字,0-9重复0次或者多次
+         * 判断字符串是否为数字,0-9重复0次或者多次
      *
      * @param strnum
      * @return

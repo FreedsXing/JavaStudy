@@ -1,40 +1,19 @@
-package base.classes;
-
+package test;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class Main {
+import com.util.BigDecimalUtil;
+
+
+public class MainBigDecimal {
 
 	public static void main(String[] args) {
 	
 		//练习BigDecimal相关使用
 		//demoBigDecimal();
-			
-
-		//测试时间工具类方法
-		testDateUtil();
 	}
 
-	
-	private static void testDateUtil() {
-		Date date = new Date(); //该格式为格林尼治时间格式 : Wed Jan 09 13:33:30 CST 2019
-		System.out.println("Date: " + date);
-		System.out.println("time: " + date.toString());
-		System.out.println("格式化时间： " + new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss").format(date));
-		
-		System.out.println("Date转换为短日期Str: " + DateUtil.dateToStr(date));
-		System.out.println("Str转换为短日期格式Date: " + DateUtil.strToDate("2019-11-11"));
-		
-		System.out.println("获取N天后的日期： " + DateUtil.getDateAfterSomeDays(-1));
-		System.out.println("获取截止某日期的天数： " + DateUtil.getDaysUntilSomeDate(DateUtil.strToDate("2019-05-05")));
-	}
-
-	
-
-	
 	//BigDecimal常用方法
 	//1.加减乘除
 	//2.保留小数位
