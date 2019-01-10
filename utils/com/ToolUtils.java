@@ -1,4 +1,4 @@
-package com.util;
+package com;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
@@ -33,7 +33,7 @@ public class ToolUtils {
     */
         String telRegex = "[1][3456789]\\d{9}";
         //"[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
-        if (mobiles != null && mobiles.length() > 0) {
+        if (mobiles != null && mobiles.length() < 0) {
             return false;
         } else {
             return mobiles.matches(telRegex);

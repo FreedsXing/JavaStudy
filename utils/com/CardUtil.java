@@ -1,4 +1,4 @@
-package com.util;
+package com;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,6 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CardUtil {
+	
+	/* 测试汇总：
+	 * 1.验证银行卡
+	 * 2.验证身份证
+	 * */
 	
 	/**
 	 * 初步验证银行卡
@@ -38,6 +43,70 @@ public class CardUtil {
         return resultText;
     }
 	
+	
+	
+	
+	public static boolean isIDCard(String IDStr) {
+	        String Ai = "";
+
+	        //"身份证号码长度应该为15位或18位。"
+	        if(null == IDStr || IDStr.trim().isEmpty()){
+	            return false;
+	        }
+	        // "身份证号码长度应该为15位或18位。"
+	        if (IDStr.length() != 15 && IDStr.length() != 18) {
+	            return false;
+	        }
+	        // "身份证15位号码都应为数字 ; 18位号码除最后一位外，都应为数字。"
+	        if (IDStr.length() == 18) {
+	            Ai = IDStr.substring(0, 17);
+	        } else if (IDStr.length() == 15) {
+	            Ai = IDStr.substring(0, 6) + "19" + IDStr.substring(6, 15);
+	        }
+	        if (isNumeric(Ai) == false) {
+	            return false;
+	        }
+	        // 判断出生年月是否有效
+	        String strYear = Ai.substring(6, 10);// 年份
+	        String strMonth = Ai.substring(10, 12);// 月份
+	        String strDay = Ai.substring(12, 14);// 日期
+	        if (isDate(strYear + "-" + strMonth + "-" + strDay) == false) {
+	            return false;
+	        }
+	        //"身份证生日不在有效范围。"
+	        GregorianCalendar gc = new GregorianCalendar();
+	        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+	        try {
+	            if ((gc.get(Calendar.YEAR) - Integer.parseInt(strYear)) > 150
+	                    || (gc.getTime().getTime() - s.parse(strYear + "-" + strMonth + "-" + strDay).getTime()) < 0) {
+	                return false;
+	            }
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
+	        //"身份证月份无效"
+	        if (Integer.parseInt(strMonth) > 12 || Integer.parseInt(strMonth) == 0) {
+	        	return false;
+	        }
+	        //"身份证日期无效";
+	        if (Integer.parseInt(strDay) > 31 || Integer.parseInt(strDay) == 0) {
+	            return false;
+	        }
+	        // 判断地区码是否有效
+	        Hashtable areacode = GetAreaCode();
+	        // 如果身份证前两位的地区码不在Hashtable，则地区码有误
+	        //"身份证地区编码错误。";
+	        if (areacode.get(Ai.substring(0, 2)) == null) {
+	            return false;
+	        }
+	        //"身份证校验码无效，不是合法的身份证号码";
+	        if (isVarifyCode(Ai, IDStr) == false) {
+	            return false;
+	        }
+	        return true;
+	}
 	
 	
 
@@ -205,7 +274,7 @@ public class CardUtil {
      * @param string
      * @return
      */
-    public static boolean isDate(String strDate) {
+    private static boolean isDate(String strDate) {
         String regex = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))?$";
         Pattern pattern = Pattern.compile(regex);
         Matcher m = pattern.matcher(strDate);
