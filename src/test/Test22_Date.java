@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.DateUtil;
 
-public class MainDate {
+public class Test22_Date {
 	public static void main(String[] args) {
 
 		//测试时间工具类方法

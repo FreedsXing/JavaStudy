@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import com.BigDecimalUtil;
 
 
-public class MainBigDecimal {
+public class Test31_BigDecimal {
 
 	public static void main(String[] args) {
 	

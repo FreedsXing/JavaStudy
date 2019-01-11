@@ -3,11 +3,13 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 
 import com.CardUtil;
 import com.ToolUtils;
 
-public class TestCard {
+public class Test33_Card {
 
 	@Test
 	public void testIdCard() {
@@ -33,5 +35,24 @@ public class TestCard {
 		boolean isPhoneNum = ToolUtils.isMobileNO("18521360114");
 		assertEquals(true, isPhoneNum);
 	
+	}
+	
+	@Tag("one")
+	@Test
+	public void testTag1() {
+		
+	}
+	
+	@Tag("two")
+	@Test
+	@DisplayName("returns")
+	public void testTag2() {
+		
+	}
+	
+	@Tag("three")
+	@Test
+	public void testTag3() {
+		
 	}
 }
