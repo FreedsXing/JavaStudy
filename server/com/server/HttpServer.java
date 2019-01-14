@@ -28,6 +28,7 @@ public class HttpServer {
 	private boolean shutdown=false;
 	
 	//http://www.cnblogs.com/chenpi/p/5602171.html#_label3
+	//https://blog.csdn.net/u012734441/article/details/44801523
 	
 	public static void main(String[] args) {
 		HttpServer server=new HttpServer();
