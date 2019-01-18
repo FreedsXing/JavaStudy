@@ -1,4 +1,4 @@
-package test;
+package com;
 
 public class Test16_Array {
 

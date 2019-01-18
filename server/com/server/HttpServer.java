@@ -1,13 +1,8 @@
 package com.server;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,22 +17,15 @@ public class HttpServer {
 	 * from where the java command was invoke.
 	 */
 	public static final String WEB_ROOT=System.getProperty("user.dir")+File.separator+"webroot";
+	public static final int port = 8080;
 	
-	private static final String SHUTDOWN_COMMAND="/SHUTDOWN";
+	//private static final String SHUTDOWN_COMMAND="/SHUTDOWN";
 	
 	private boolean shutdown=false;
 	
-	//http://www.cnblogs.com/chenpi/p/5602171.html#_label3
-	//https://blog.csdn.net/u012734441/article/details/44801523
-	
-	public static void main(String[] args) {
-		HttpServer server=new HttpServer();
-		server.await();
-	}
-	
 	public void await(){
+				
 		ServerSocket serverSocket=null;
-		int port=8080;
 		try {
 			serverSocket=new ServerSocket(port,1,InetAddress.getByName("127.0.0.1"));
 		} catch (Exception e) {
@@ -66,5 +54,4 @@ public class HttpServer {
 			}
 		}
 	}
-
 }

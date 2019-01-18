@@ -8,7 +8,7 @@ import java.util.Date;
 public class DateUtil {
 	
 	//常用方法：
-	//1.str转化为短日期格式
+	//1.str转化为日期格式
 	//2.date短格式转化为字符串
 	//3.get N天后的日期
 	//4.get截止到某天的天数
@@ -23,24 +23,18 @@ public class DateUtil {
 	 * @return
 	 */
 	public static String dateToStr(Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return sdf.format(date);
 	}
 	
 	
 	/**
 	 * 将短时间格式字符串转换为时间 yyyy-MM-dd
+	 * @throws ParseException 
 	 */
-	public static Date strToDate(String str) {
+	public static Date strToDate(String str) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = null;
-		try {
-			 date = sdf.parse(sdf.format(sdf.parse(str)));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return date;
+		return sdf.parse(str);
 	}
 	
 	
@@ -53,7 +47,7 @@ public class DateUtil {
 		
 		Calendar cal = Calendar.getInstance();
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 		cal.add(Calendar.DATE, daysAfter);
 		
