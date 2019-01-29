@@ -95,7 +95,7 @@ public class CardUtil {
 	            return false;
 	        }
 	        // 判断地区码是否有效
-	        Hashtable areacode = GetAreaCode();
+	        Hashtable<String, String> areacode = GetAreaCode();
 	        // 如果身份证前两位的地区码不在Hashtable，则地区码有误
 	        //"身份证地区编码错误。";
 	        if (areacode.get(Ai.substring(0, 2)) == null) {
@@ -169,7 +169,7 @@ public class CardUtil {
             return tipInfo;
         }
         // 判断地区码是否有效
-        Hashtable areacode = GetAreaCode();
+        Hashtable<String, String> areacode = GetAreaCode();
         // 如果身份证前两位的地区码不在Hashtable，则地区码有误
         if (areacode.get(Ai.substring(0, 2)) == null) {
             tipInfo = "身份证地区编码错误。";
@@ -211,8 +211,8 @@ public class CardUtil {
      *
      * @return Hashtable 对象
      */
-    private static Hashtable GetAreaCode() {
-        Hashtable hashtable = new Hashtable();
+    private static Hashtable<String, String> GetAreaCode() {
+        Hashtable<String, String> hashtable = new Hashtable<String, String>();
         hashtable.put("11", "北京");
         hashtable.put("12", "天津");
         hashtable.put("13", "河北");

@@ -9,13 +9,10 @@ public class Test23_Map {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Map<String, String> map = new HashMap();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("1", "good");
 		map.put("2", "good");
-		map.put("3", "study");
-		
-		String [] names = {"ming", "hao", "qiang"};
-		
+		map.put("3", "study");		
 		
 		//Map的遍历方法
 		

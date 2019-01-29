@@ -62,7 +62,7 @@ public class DateUtil {
 	 */
 	public static int getDaysUntilSomeDate(Date date) {
 		
-		if (date == null || date.equals(""))
+		if (date == null || "".equals(date.toString()))
 			return 0;
 		
 		long timeCurrent = System.currentTimeMillis();
