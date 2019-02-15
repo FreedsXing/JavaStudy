@@ -46,6 +46,16 @@ public class Test22_Date {
 		
 		//System.out.println("获取N天后的日期： " + DateUtil.getDateAfterSomeDays(1));
 		//System.out.println("获取截止某日期的天数： " + DateUtil.getDaysUntilSomeDate(DateUtil.strToDate("2019-05-05")));
+		
+		//关于日期
+		Calendar call = Calendar.getInstance();
+		System.out.println(call.get(Calendar.YEAR) + " " + (call.get(Calendar.MONTH) + 1) + " " + call.get(Calendar.DATE));
+		System.out.println(call.get(Calendar.HOUR_OF_DAY) + " " + call.get(Calendar.MINUTE) + " " + call.get(Calendar.SECOND));
+
+		//获取今天的日期
+		cal.set(call.get(Calendar.YEAR), (call.get(Calendar.MONTH)), call.get(Calendar.DATE), 
+				call.get(Calendar.HOUR_OF_DAY), call.get(Calendar.MINUTE), call.get(Calendar.SECOND));
+		System.out.println("------------time=" + cal.getTime());
 	}  
 	
 }

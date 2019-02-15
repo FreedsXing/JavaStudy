@@ -11,6 +11,10 @@ public class Test32_BinaryDecimal {
 		System.out.println("---num=" + BinaryDecimalUtil.DecimalToBinary(num1));
 		
 		System.out.println("---num3=" + DecimalTo(1.255552, 5));
+		
+		double num11 = 0.05;
+		double num12 = 0.01;
+		System.out.println("---------" + (num11 + num12));
 	}
 
 	
