@@ -14,7 +14,11 @@ public class Test32_BinaryDecimal {
 		
 		double num11 = 0.05;
 		double num12 = 0.01;
-		System.out.println("---------" + (num11 + num12));
+		System.out.println("---------num11 + num12 =" + (num11 + num12));
+		System.out.println("---------num11 + num11 =" + (num11 + num11));
+		System.out.println("---------num11=" + num11);
+		System.out.println("---------num12=" +  num12);
+
 	}
 
 	
