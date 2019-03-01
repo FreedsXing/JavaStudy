@@ -4,6 +4,12 @@ public class Test21_String {
 
 	public static void main(String[] args) {
 		
+		String channels = "yhk,kdk";
+		String [] cs = channels.split(",");
+		for(int i = 0; i < cs.length; i++) {
+			System.out.println("-------channel= " + cs[i]);
+		}
+		
 		String city = "beijing";
 		
 		System.out.println("获得第一次出现字符i的位置：" + city.indexOf('i'));

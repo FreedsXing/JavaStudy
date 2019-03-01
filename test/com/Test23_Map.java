@@ -1,8 +1,10 @@
 package com;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Test23_Map {
 
@@ -39,6 +41,23 @@ public class Test23_Map {
 			String value = map.get(key);
 			System.out.println("------------key=" + key + ", value=" + value);
 		}
-	}
+		
 
+		ConcurrentHashMap<String, Hunter> hunters = new ConcurrentHashMap<String, Hunter>();
+		//hunters.put("1", new Hunter(1, "beijing", 1000));
+		
+	}
+	
+	class Hunter{
+		
+		public Hunter(long hunterId, String city, double balance) {
+			super();
+			this.hunterId = hunterId;
+			this.city = city;
+			this.balance = balance;
+		}
+		long hunterId = -1;
+		String city = null;
+		double balance = 0;
+	}
 }
