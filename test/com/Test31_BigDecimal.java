@@ -12,6 +12,10 @@ public class Test31_BigDecimal {
 	
 		//练习BigDecimal相关使用
 		//demoBigDecimal();
+		
+		BigDecimal bal = new BigDecimal("40.1264");
+		
+		System.out.println("-----bal=" + bal + "---bal2=" + bal.negate());
 	}
 
 	//BigDecimal常用方法

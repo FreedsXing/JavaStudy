@@ -6,6 +6,6 @@ public class TestBase {
 
 	@Before
 	public void startServer() {
-		System.out.println(" --" + Thread.currentThread().getStackTrace()[1].getClassName() + " --" + Thread.currentThread().getStackTrace()[1].getMethodName());
+		System.out.println("@Before --" + Thread.currentThread().getStackTrace()[1].getClassName().substring(5) + " --" + Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 }
