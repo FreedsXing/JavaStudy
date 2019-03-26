@@ -1,5 +1,7 @@
 package test;
 
+import java.sql.Date;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,7 +13,7 @@ public class TestFirst extends TestBase {
 	/*@BeforeClass
 	public static void initData() {
 		System.out.println("@BeforeClass --" + Thread.currentThread().getStackTrace()[1].getClassName().substring(5) + " --" + Thread.currentThread().getStackTrace()[1].getMethodName());
-	}*/
+	}
 	
 	@Before
 	public void startServer() {
@@ -37,5 +39,15 @@ public class TestFirst extends TestBase {
 	public static void clearData() {
 		System.out.println("@AfterClass --" + Thread.currentThread().getStackTrace()[1].getClassName().substring(5) + " --" + Thread.currentThread().getStackTrace()[1].getMethodName());
 
+	}*/
+	
+	@Test(expected = NullPointerException.class)
+	public void testExcelption() {
+		Date date = null;
+		if(date.getDay() > 0) {
+			System.out.println("---1---");
+		}else {
+			System.out.println("---2---");
+		}
 	}
 }

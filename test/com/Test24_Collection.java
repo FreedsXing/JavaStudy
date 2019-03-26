@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Test24_Collections {
+public class Test24_Collection {
 
 	public static void main(String[] args) {
 	
